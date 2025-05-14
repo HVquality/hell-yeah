@@ -85,6 +85,12 @@ if is_repeated:
     col5.metric("C_ss,maks (Maksimum)", f"{C_ss_max:.2f}")
     col6.metric("C_ss,min (Minimum)", f"{C_ss_min:.2f}")
 
+mec = st.sidebar.number_input("MEC",
+                            min_value=0.0, max_value=1000.0, value=0.0, step=0.1)
+
+mtc = st.sidebar.number_input("MTC",
+                            min_value=0.0, max_value=1000.0, value=0.0, step=0.1)
+
 # Plot
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=t, y=C, mode='lines', name='Konsentrasi Obat'))
@@ -107,6 +113,16 @@ fig.update_layout(
     yaxis=dict(range=[0, y_max]),
     hovermode='x unified'
 )
+
+if mec > 0:
+    fig.add_hline(y=mec, line_dash="dot", line_color="green",
+                annotation_text=f"MEC: {mec} mg/L",
+                annotation_position="bottom right")
+
+if mtc > 0:
+    fig.add_hline(y=mtc, line_dash="dot", line_color="red",
+                annotation_text=f"MTC: {mtc} mg/L",
+                annotation_position="top right")
 
 # Tampilkan plot
 st.plotly_chart(fig, use_container_width=True)

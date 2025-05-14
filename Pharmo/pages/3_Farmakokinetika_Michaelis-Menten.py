@@ -37,7 +37,7 @@ D = st.sidebar.number_input("Dosis (mg)", min_value=0.0, max_value=5000.0, value
 t_end = st.sidebar.number_input("Jangka waktu (hours)", min_value=1.0, max_value=1000.0, value=400.0)
 
 # MEC dan MTC
-st.sidebar.header("Parameter Terapi")
+st.sidebar.header("Parameter Terapetik")
 mec = st.sidebar.number_input("MEC (Minimum Effective Concentration) [mg/L]",
                               min_value=0.0,
                               max_value=1000.0,
